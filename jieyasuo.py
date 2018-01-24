@@ -13,4 +13,7 @@ def jieyasuo():
 
 
 if __name__ == '__main__':
+    #先调用接收脚本
+    os.system('python /home/pi/pyspace/client_recv.py')
+    #再解压缩
     jieyasuo()
