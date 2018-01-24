@@ -14,7 +14,9 @@ def yasuo():
     os.system('tar zcvf /home/user/pyspace/simple-gcc-stm32-project.tar.gz simple-gcc-stm32-project/')
     print('end tar.gz...')
 
-    os.system('python /home/user/pyspace/service_send.py')
 
 if __name__ == '__main__':
+    #先压缩
     yasuo()
+    #再调用发送脚本
+    os.system('python /home/user/pyspace/service_send.py')
