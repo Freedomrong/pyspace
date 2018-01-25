@@ -18,7 +18,7 @@ def worker_1(interval):#openocd与FT2232连接
 
     print("worker_1")
     print('\n')
-    os.system('sudo openocd -f interface/ftdi/open_jtag.cfg -f  target/stm32f1x.cfg')
+    os.system('sudo openocd -f interface/ftdi/SWD_FT.cfg -f  target/stm32f1x.cfg')
     print("end worker_1")
 
 def worker_2(interval):#编译代码，以及打开arm gdb
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     #p4 = multiprocessing.Process(target = worker_4, args = (5,))
 
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    s.connect(('192.168.0.101',8080))
+    s.connect(('192.168.0.103', 6666))
     
 #    start_variable = int(input())
 #    if start_variable == 1000:
@@ -111,7 +111,7 @@ if __name__ == "__main__":
                           print(start_data)
                           p1.start()
 
-        if start_data == b'1002':#1002对比1001只是少了编译环节，用以节约时间
+        if start_data == b'1002':#1002对比1000只是少了编译环节，用以节约时间
                           print(start_data)
                           p1.start()
                           time.sleep(5)
