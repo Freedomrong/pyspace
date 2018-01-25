@@ -31,6 +31,8 @@ def socket_service():
     while (sw == False):
         input_data = input('please input:')
         conn.send(input_data.encode('utf-8'))
+        data_client = conn.recv(4096)
+        print(data_client)
 
 if __name__ == '__main__':
     socket_service()
