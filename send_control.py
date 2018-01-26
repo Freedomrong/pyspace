@@ -31,7 +31,7 @@ def socket_service():
         conn.send(input_data.encode('utf-8'))
         data_client = conn.recv(4096)
         print(data_client)
-        break
+        #break
     #这里程序执行完毕之后要关闭连接关闭脚本,但是这里掐断连接mtask2那里写的自动关闭就失效了，因为mtask2连接的6666端口被关闭了
     #conn.close()
     #s.close()
