@@ -27,7 +27,7 @@ def worker_2(interval):#编译代码，以及打开arm gdb
     print('\n')
     os.system('pwd')
     os.chdir('../')
-    os.chdir('workspace/simple-gcc-stm32-project/')
+    os.chdir('pyspace/simple-gcc-stm32-project/')
     os.system('make clean')
     os.system('make')
     os.system('arm-none-eabi-gdb -q -x t.py LED_project.elf')

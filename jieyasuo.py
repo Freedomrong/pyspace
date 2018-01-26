@@ -17,3 +17,5 @@ if __name__ == '__main__':
     os.system('python /home/pi/pyspace/client_recv.py')
     #再解压缩
     jieyasuo()
+    #再调用mtask2脚本
+    #os.system('python /home/pi/pyspace/mtask2.py')
