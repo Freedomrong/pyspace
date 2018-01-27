@@ -16,7 +16,7 @@ def socket_service():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        s.bind(('192.168.0.103',6666))
+        s.bind(('192.168.0.102',7777))
         s.listen(10)
     except socket.error as msg:
         print(msg)
@@ -27,17 +27,25 @@ def socket_service():
     print('Accept new connection from {0}'.format(addr))
 
     while 1:
-        input_data = input('please input:')
+        while 1:
+            input_data = input('please input:')
+            if((input_data != '1000') and (input_data != '1001') and (input_data != '1002')):
+                print('请重新输入')
+            else:
+                break
         conn.send(input_data.encode('utf-8'))
-        data_client = conn.recv(4096)
+        data_client = conn.recv(64)
         print(data_client)
-        #break
+        time.sleep(12)
+        data_client = conn.recv(64)
+        print(data_client)
+        break
     #这里程序执行完毕之后要关闭连接关闭脚本,但是这里掐断连接mtask2那里写的自动关闭就失效了，因为mtask2连接的6666端口被关闭了
-    #conn.close()
-    #s.close()
+    conn.close()
+    s.close()
 
 if __name__ == '__main__':
-    print('**这个脚本是控制开启openocd以及gdb所使用,监听的端口号是6666***')
+    print('**这个脚本是控制开启openocd以及gdb所使用,监听的端口号是7777***')
     print('**出现please input*************************************')
     print('*输入1000，openocd开启,完成编译代码,开启gdb且gdb会加载脚本**')
     print('*输入1001，openocd开启***********************************')
