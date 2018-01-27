@@ -32,7 +32,8 @@ def socket_service():
             while 1:
                 print('**(1)可以输入debug_start********************************************************')
                 print('*****(1.1)请不要debug模式下输入c或者continue，请用 monitor resume 代替********')
-                print('*****(1.2)还有monitor rest以及monitor halt *******************************')
+                print('*****(1.1)配合break使用时可以输入continue********************************')
+                print('*****(1.2)还有openocd指令monitor rest以及monitor halt ***************************')
                 print('**(2)可以输入mem_poll***********************************************************')
                 print('**(3)可以输入dwt****************************************************************')
                 print('请输入相应指令')
@@ -53,7 +54,7 @@ def socket_service():
                     print(data_client)
                     break
 
-                if((input_data == 'c') or (input_data == 'continue')):
+                if((input_data == 'c')): #or (input_data == 'continue')):
                     print('请重新输入')
                 else:
                     conn.send(input_data.encode('utf-8'))
