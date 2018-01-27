@@ -9,7 +9,7 @@ import struct
 def socket_client_recv():
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.connect(('192.168.0.103',6666))
+            s.connect(('192.168.0.102',6666))
         except socket.error as msg:
             print msg 
             sys.exit(1)

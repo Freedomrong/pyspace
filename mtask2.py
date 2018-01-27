@@ -49,7 +49,7 @@ def worker_3(interval):#这里在进程3中临时写这一段程序只用来加�
     print('\n')
     os.system('pwd')
     os.chdir('../')
-    os.chdir('workspace/simple-gcc-stm32-project/')
+    os.chdir('pyspace/simple-gcc-stm32-project/')
     os.system('arm-none-eabi-gdb -q -x t.py LED_project.elf')
 
     print("end worker_3")
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     #p4 = multiprocessing.Process(target = worker_4, args = (5,))
 
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    s.connect(('192.168.0.103', 6666))
+    s.connect(('192.168.0.102', 7777))
     
 #    start_variable = int(input())
 #    if start_variable == 1000:
