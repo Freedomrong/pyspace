@@ -20,6 +20,7 @@ def worker_1(interval):#openocd与FT2232连接
     print('\n')
     os.system('sudo openocd -f interface/ftdi/SWD_FT.cfg -f  target/stm32f1x.cfg')
     print("end worker_1")
+    os._exit(1)
 
 def worker_2(interval):#编译代码，以及打开arm gdb
 
@@ -35,12 +36,14 @@ def worker_2(interval):#编译代码，以及打开arm gdb
     time.sleep(3)
 
     #当进程运行到这里时，说明gdb已经已经正常退出了，而openocd占用的进程目前只知道通过CTRL＋C快捷键强制关闭，故以下使用模拟键盘的方法在此关闭openocd
-    v = virtkey.virtkey()
+    
+    os._exit(1)
+    #v = virtkey.virtkey()
 
-    v.press_keysym(65507)#按下左CTRL
-    v.press_unicode(ord('c'))#按下C
-    v.release_keysym(ord('c'))#释放C
-    v.release_keysym(65507)#释放左CTRL
+    #v.press_keysym(65507)#按下左CTRL
+    #v.press_unicode(ord('c'))#按下C
+    #v.release_keysym(ord('c'))#释放C
+    v#.release_keysym(65507)#释放左CTRL
 
 def worker_3(interval):#这里在进程3中临时写这一段程序只用来加载elf文件
 
@@ -55,21 +58,22 @@ def worker_3(interval):#这里在进程3中临时写这一段程序只用来加�
     print("end worker_3")
 
     #当进程运行到这里时，说明gdb已经已经正常退出了
-    v = virtkey.virtkey()
+    os._exit(1)
+    #v = virtkey.virtkey()
 
-    v.press_keysym(65507)#按下左CTRL
-    v.press_unicode(ord('c'))#按下C
-    v.release_keysym(ord('c'))#释放C
-    v.release_keysym(65507)#释放左CTRL
+    #v.press_keysym(65507)#按下左CTRL
+    #v.press_unicode(ord('c'))#按下C
+    #v.release_keysym(ord('c'))#释放C
+    #v.release_keysym(65507)#释放左CTRL
 
 
 def worker_4(interval):
-    print("worker_3")
+    print("worker_4")
 
     tn=telnetlib.Telnet()
     tn.write(b'reset\n')
 
-    print("end worker_3")
+    print("end worker_4")
     
     
 
