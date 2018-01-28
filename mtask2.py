@@ -84,7 +84,7 @@ if __name__ == "__main__":
     #p4 = multiprocessing.Process(target = worker_4, args = (5,))
 
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    s.connect(('192.168.0.102', 7777))
+    s.connect(('192.168.0.103', 7777))
     
 #    start_variable = int(input())
 #    if start_variable == 1000:
