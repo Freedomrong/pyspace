@@ -21,6 +21,7 @@ def hit_me():   #button按下时候所执行的函数
     if on_hit == False:
         on_hit = True
         var.set('you hit me')   #将显示变量更改为'you hit me'
+
     else:
         on_hit = False
         var.set('')  #显示变量清空

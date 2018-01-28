@@ -16,7 +16,7 @@ def socket_service():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        s.bind(('192.168.0.102',7777))
+        s.bind(('192.168.0.103',7777))
         s.listen(10)
     except socket.error as msg:
         print(msg)
