@@ -33,6 +33,10 @@ def main():
             for layer in inner_layers[::-1]:  # 反向传播
                 d = layer.backward(d)
 
+            ##
+            print(inner_layers) #####
+            ##
+
             if pos == 0:  # 一个epoch完成后进行准确率测试
                 data, _ = datalayer2.forward()
                 x, label = data
