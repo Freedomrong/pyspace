@@ -4,16 +4,28 @@ import sys
 import multiprocessing
 import time
 import virtkey
+<<<<<<< HEAD
+=======
+import socket
+>>>>>>> 7858cec47de25036ce66d808136f3d641a2e552e
 
 w1 = 0 #标记变量,值变为1代表进程内的函数运行到了最后一行
 w2 = 0
 w3 = 0
 
+<<<<<<< HEAD
 def worker_1(interval):#openocd于FT2232连接
 
     print("worker_1")
     print('\n')
     os.system('openocd -f interface/ftdi/open_jtag.cfg -f  target/stm32f1x.cfg')
+=======
+def worker_1(interval):#openocd与FT2232连接
+
+    print("worker_1")
+    print('\n')
+    os.system('sudo openocd -f interface/ftdi/open_jtag.cfg -f  target/stm32f1x.cfg')
+>>>>>>> 7858cec47de25036ce66d808136f3d641a2e552e
     print("end worker_1")
 
 def worker_2(interval):#编译代码，以及打开arm gdb
@@ -179,18 +191,67 @@ def worker_3(interval):
 
     print("end worker_3")
 
+<<<<<<< HEAD
+=======
+
+def worker_4(interval):
+
+    c = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    c.connect(('192.168.0.101',8080))
+    while(1):
+        
+        control_data = c.recv(4)
+        cv = virtkey.virtkey()
+        cv.press_unicode(ord(control_data))
+        cv.release_keysym(ord(control_data))
+
+        cv.press_keysym(65421)#按下ENTER
+        cv.release_keysym(65421)#释放ENTER
+    
+    
+
+>>>>>>> 7858cec47de25036ce66d808136f3d641a2e552e
 if __name__ == "__main__":
     p1 = multiprocessing.Process(target = worker_1, args = (2,))#openocd与FT2232连接
     p2 = multiprocessing.Process(target = worker_2, args = (3,))#编译代码，打开arm-gdb
     p3 = multiprocessing.Process(target = worker_3, args = (4,))#在gdb中模拟键盘输入初始化指令
+<<<<<<< HEAD
 
     start_variable = int(input())
     if start_variable == 1000:
+=======
+    p4 = multiprocessing.Process(target = worker_4, args = (5,))
+
+    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.connect(('192.168.0.101',8080))
+    
+#    start_variable = int(input())
+#    if start_variable == 1000:
+#                      p1.start()
+#                      time.sleep(5)
+#                      p2.start()
+#                      time.sleep(8)
+#                      p3.start()
+                      
+    start_data = s.recv(4)
+    if start_data == b'1000':
+                      print(start_data)
+>>>>>>> 7858cec47de25036ce66d808136f3d641a2e552e
                       p1.start()
                       time.sleep(5)
                       p2.start()
                       time.sleep(8)
                       p3.start()
+<<<<<<< HEAD
+=======
+                      time.sleep(2)
+                      p4.start()
+                      
+                      
+    if start_data == b'1001':
+                      print(start_data)
+                      p1.start()        
+>>>>>>> 7858cec47de25036ce66d808136f3d641a2e552e
 
     # print("The number of CPU is:" + str(multiprocessing.cpu_count()))
     # for p in multiprocessing.active_children():

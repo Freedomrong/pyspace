@@ -1,0 +1,33 @@
+
+import select, threading
+
+global_data = "hello"
+
+s1 = None
+s2 = None
+re_list = [s1, s2]
+
+lock = False
+def global_proc(store):
+    
+    
+    d = dtore.pop()
+    pass
+        
+            
+        
+        
+
+
+store = list()
+while True:
+    read_s, wirte_s, err_s = select.select(re_list, [], [])
+    
+    for e in read_s:
+        if e is s1;
+            data = s1.recv(1024)
+            threading.Thread(traget=global_proc, args=(global_data,)).strat()
+            
+        elif e is s2:
+            pass
+        

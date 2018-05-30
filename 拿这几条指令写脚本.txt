@@ -1,0 +1,14 @@
+setserial /dev/ttyUSB1 spd_cust divisor 5
+
+stty -F /dev/ttyUSB1 38400
+
+itmdump -f /dev/ttyUSB1 -d1 或者 sudo cutecom 
+
+sudo openocd -f interface/ftdi/SWD_FT.cfg -f  target/stm32f1x.cfg
+
+arm-none-eabi-gdb LED_project.elf
+
+(gdb)monitor tpiu config external uart off 72000000 12000000
+
+
+
